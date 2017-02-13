@@ -1,0 +1,54 @@
+# norootforbuild
+# Maintainer: Roman Neuhauser <neuhauser+basex@sigpipe.cz>
+
+Name:           basex
+Version:        __VERSION__
+Release:        0
+License:        MIT
+Summary:        Base64, Base32, Base16 and others
+Url:            https://github.com/roman-neuhauser/%{name}
+Group:          Development/Tools/Version Control
+Source:         %{name}-%{version}.tar.gz
+BuildRequires:  filesystem
+BuildRoot:      %_tmppath/%name-%version-build
+BuildRequires:  filesystem
+BuildRequires:  boost-devel
+BuildRequires:  cram
+%if 0%{?leap_version} || 0%{?sle_version} || 0%{?suse_version}
+BuildRequires:  gcc5-c++
+%else
+BuildRequires:  gcc-c++
+%endif
+
+%description
+Implementation of all five Base-X encodings described in RFC 4648:
+Base 16, Base 32, Base 32 with Extended Hex Alphabet, Base 64, and
+Base 64 with URL and Filename Safe Alphabet.
+
+%prep
+%setup -q
+
+%build
+%configure CXX=g++-5
+make CXXFLAGS="$RPM_OPT_FLAGS"
+
+%check
+make check
+
+%install
+make install DESTDIR="%{buildroot}"
+
+%files
+%defattr(-,root,root)
+%{_bindir}/base16
+%{_bindir}/base32
+%{_bindir}/base32hex
+%{_bindir}/base64
+%{_bindir}/base64ufs
+%{_mandir}/man1/base16.1.gz
+%{_mandir}/man1/base32.1.gz
+%{_mandir}/man1/base32hex.1.gz
+%{_mandir}/man1/base64.1.gz
+%{_mandir}/man1/base64ufs.1.gz
+
+%changelog
