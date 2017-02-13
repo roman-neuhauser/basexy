@@ -1,0 +1,82 @@
+CXXFLAGS = -std=c++1z -Wall -Wextra -Wfatal-errors
+CPPFLAGS = $(addprefix -I,$(boost_includes))
+LD = $(CXX)
+
+boost_includes = @boost_includes@
+
+prefix = @prefix@
+bindir = @bindir@
+mandir = @mandir@
+man1dir = $(mandir)/man1
+
+tests = $(testdir)/*.t
+
+smandir = m
+srcdir = s
+testdir = t
+
+cram = cram
+cramflags = -v
+
+rst2html = rst2html
+rst2htmlflags = -v --rfc-references
+
+frontends = base16 base32 base32hex base64 base64ufs
+man1pages = $(addsuffix .1,$(frontends))
+manpages = $(man1pages)
+testers = testdecoder testencoder testslice
+
+bases = base16 base32 base32hex base64 base64ufs base256
+
+basex_headers = $(addprefix $(srcdir)/basex/,$(addsuffix .hpp,$(bases)))
+
+
+.PHONY: all
+all: $(frontends) $(testers) libbasex.so $(manpages)
+
+.PHONY: html
+html: README.html
+
+.PHONY: man
+man: $(manpages)
+
+$(manpages): %: $(smandir)/%.in
+	cp $< $@
+
+.PHONY: check
+check: all
+	env -i BUILDDIR="$$PWD" PATH="$$PATH" $(cram) $(cramflags) $(tests)
+
+.PHONY: clean
+clean:
+	rm -f $(frontends) $(testers) *.o *.html $(testdir)/*.err
+
+.PHONY: install
+install: $(frontends) $(manpages) | installdirs
+	install -m 755 $(frontends) $(DESTDIR)$(bindir)
+	install -m 644 $(man1pages) $(DESTDIR)$(man1dir)
+
+.PHONY: installdirs
+installdirs:
+	mkdir -p $(DESTDIR)$(bindir)
+	mkdir -p $(DESTDIR)$(man1dir)
+
+
+%.html: %.rst
+	$(rst2html) $(rst2htmlflags) $< $@
+
+$(frontends): $(srcdir)/impl.hpp $(srcdir)/basex/encoder.hpp $(srcdir)/basex/decoder.hpp
+$(frontends): %: $(srcdir)/%.cpp $(srcdir)/basex/%.hpp
+	$(CXX) $(CXXFLAGS) -o$@ $<
+
+libbasex.so: $(srcdir)/libbasex.cpp $(srcdir)/libbasex.hpp
+	$(CXX) $(CXXFLAGS) -shared -o$@ $<
+
+testdecoder: s/testdecoder.cpp $(srcdir)/basex/decoder.hpp $(basex_headers)
+	$(CXX) $(CXXFLAGS) -o$@ $<
+
+testencoder: s/testencoder.cpp $(srcdir)/basex/encoder.hpp $(basex_headers)
+	$(CXX) $(CXXFLAGS) -o$@ $<
+
+testslice: s/testslice.cpp $(srcdir)/basex/slice.hpp
+	$(CXX) $(CXXFLAGS) -o$@ $<
