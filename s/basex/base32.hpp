@@ -7,10 +7,10 @@
 
 struct b32
 {
-  constexpr static size_t const block_size = 40;
-  constexpr static size_t const encoded_bits = 5;
-  constexpr static size_t const decoded_bits = 8;
-  constexpr static char const * const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+  constexpr static size_t block_size = 40;
+  constexpr static size_t encoded_bits = 5;
+  constexpr static size_t decoded_bits = 8;
+  constexpr static char const * alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
   char encode(unsigned long val)
   {
     return alphabet[val];
