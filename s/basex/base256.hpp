@@ -6,9 +6,9 @@
 
 struct b256
 {
-  constexpr static size_t const block_size = 8;
-  constexpr static size_t const encoded_bits = 8;
-  constexpr static size_t const decoded_bits = 8;
+  constexpr static size_t block_size = 8;
+  constexpr static size_t encoded_bits = 8;
+  constexpr static size_t decoded_bits = 8;
   char encode(unsigned long val)
   {
     return val;
