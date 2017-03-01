@@ -3,10 +3,10 @@
 .\" FRONT MATTER {{{
 .Dd Feb 25, 2017
 .Os
-.Dt BASE64UFS 1
+.Dt BASEX-BASE64UFS 1
 .
 .Sh NAME
-.Nm base64ufs
+.Nm basex-base64ufs
 .Nd Base 64 With URL and Filename Safe Alphabet encoder and decoder
 .\" FRONT MATTER }}}
 .
@@ -55,19 +55,19 @@ This is the default.
 .\" EXAMPLES {{{
 .Sh EXAMPLES
 .Bd -literal -offset xx
-$ printf snafubar | base64ufs; echo
+$ printf snafubar | basex-base64ufs; echo
 c25hZnViYXI=
-$ echo snafubar | base64ufs | base64ufs -d
+$ echo snafubar | basex-base64ufs | basex-base64ufs -d
 snafubar
 .Ed
 .\" }}}
 .
 .\" SEE ALSO {{{
 .Sh SEE ALSO
-.Xr base16 1 ,
-.Xr base32 1 ,
-.Xr base32hex 1 ,
-.Xr base64 1 .
+.Xr basex-base16 1 ,
+.Xr basex-base32 1 ,
+.Xr basex-base32hex 1 ,
+.Xr basex-base64 1 .
 .\" }}}
 .
 .\" STANDARDS {{{

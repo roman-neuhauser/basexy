@@ -1,29 +1,30 @@
 .\" vim: tw=72 fdm=marker cms=.\\"\ %s
 .
 .\" FRONT MATTER {{{
-.Dd Feb 25, 2017
+.Dd Mar 01, 2017
 .Os
-.Dt BASEX-BASE16 1
+.Dt BASEX 1
 .
 .Sh NAME
-.Nm basex-base16
-.Nd Base 16 encoder and decoder
+.Nm basex
+.Nd Base 16, Base 32, Base 32, Base 64 encoder and decoder
 .\" FRONT MATTER }}}
 .
 .\" SYNOPSIS {{{
 .Sh SYNOPSIS
 .Nm
-. Fl h | hh
+. Fl h
 .Nm
-. Fl e
-.Nm
-. Op Fl d
+. Op Fl e | Fl d
+. Cm BASE
 .\" SYNOPSIS }}}
 .
 .\" DESCRIPTION {{{
 .Sh DESCRIPTION
 .Nm
-encodes or decodes standard input to/from Base 16.
+encodes or decodes standard input to/from Base 16, Base 32,
+Base 32 with Extended Hex Alphabet,
+and Base 64 with URL and Filename Safe Alphabet.
 .\" }}}
 .
 .\" OPTIONS {{{
@@ -32,10 +33,28 @@ encodes or decodes standard input to/from Base 16.
 .It Fl h
 Display usage information.
 .It Fl d
-Decode Base 16 input.
+Decode input.
 .It Fl e
-Encode input using Base 16.
+Encode input.
 This is the default.
+.El
+.\" }}}
+.
+.\" OPERANDS {{{
+.Sh OPERANDS
+.Bl -tag -width xx
+.It Cm BASE
+One of:
+. Li base16
+. Li base32
+. Li base32hex
+. Li base64
+. Li base64ufs .
+Selects the encoding:
+Base 16,
+Base 32,
+Base 32 with Extended Hex Alphabet,
+or Base 64 with URL and Filename Safe Alphabet
 .El
 .\" }}}
 .
@@ -55,16 +74,16 @@ This is the default.
 .\" EXAMPLES {{{
 .Sh EXAMPLES
 .Bd -literal -offset xx
-$ printf snafubar | base16; echo
-736E616675626172
-$ echo snafubar | base16 | base16 -d
+$ printf snafubar | basex -e base32; echo
+ONXGCZTVMJQXE===
+$ echo snafubar | basex -e base32 | basex -d base32
 snafubar
 .Ed
 .\" }}}
 .
 .\" SEE ALSO {{{
 .Sh SEE ALSO
-.Xr basex-base32 1 ,
+.Xr basex-base16 1 ,
 .Xr basex-base32hex 1 ,
 .Xr basex-base64 1 ,
 .Xr basex-base64ufs 1 .
@@ -72,7 +91,7 @@ snafubar
 .
 .\" STANDARDS {{{
 .Sh STANDARDS
-.Lk https://tools.ietf.org/html/rfc4648#section-8 RFC4648
+.Lk https://tools.ietf.org/html/rfc4648#section-6 RFC4648
 .\" }}}
 .
 .\" AUTHORS {{{
