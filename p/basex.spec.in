@@ -40,15 +40,17 @@ make install DESTDIR="%{buildroot}"
 
 %files
 %defattr(-,root,root)
-%{_bindir}/base16
-%{_bindir}/base32
-%{_bindir}/base32hex
-%{_bindir}/base64
-%{_bindir}/base64ufs
-%{_mandir}/man1/base16.1.gz
-%{_mandir}/man1/base32.1.gz
-%{_mandir}/man1/base32hex.1.gz
-%{_mandir}/man1/base64.1.gz
-%{_mandir}/man1/base64ufs.1.gz
+%{_bindir}/basex
+%{_bindir}/basex-base16
+%{_bindir}/basex-base32
+%{_bindir}/basex-base32hex
+%{_bindir}/basex-base64
+%{_bindir}/basex-base64ufs
+%{_mandir}/man1/basex.1.gz
+%{_mandir}/man1/basex-base16.1.gz
+%{_mandir}/man1/basex-base32.1.gz
+%{_mandir}/man1/basex-base32hex.1.gz
+%{_mandir}/man1/basex-base64.1.gz
+%{_mandir}/man1/basex-base64ufs.1.gz
 
 %changelog

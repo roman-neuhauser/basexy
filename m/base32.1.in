@@ -3,10 +3,10 @@
 .\" FRONT MATTER {{{
 .Dd Feb 25, 2017
 .Os
-.Dt BASE32 1
+.Dt BASEX-BASE32 1
 .
 .Sh NAME
-.Nm base32
+.Nm basex-base32
 .Nd Base 32 encoder and decoder
 .\" FRONT MATTER }}}
 .
@@ -55,19 +55,19 @@ This is the default.
 .\" EXAMPLES {{{
 .Sh EXAMPLES
 .Bd -literal -offset xx
-$ printf snafubar | base32; echo
+$ printf snafubar | basex-base32; echo
 ONXGCZTVMJQXE===
-$ echo snafubar | base32 | base32 -d
+$ echo snafubar | basex-base32 | basex-base32 -d
 snafubar
 .Ed
 .\" }}}
 .
 .\" SEE ALSO {{{
 .Sh SEE ALSO
-.Xr base16 1 ,
-.Xr base32hex 1 ,
-.Xr base64 1 ,
-.Xr base64ufs 1 .
+.Xr basex-base16 1 ,
+.Xr basex-base32hex 1 ,
+.Xr basex-base64 1 ,
+.Xr basex-base64ufs 1 .
 .\" }}}
 .
 .\" STANDARDS {{{

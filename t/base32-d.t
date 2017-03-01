@@ -1,22 +1,22 @@
   $ . "$TESTDIR/setup"
 
 
-  $ base32 -d </dev/null
+  $ basex-base32 -d </dev/null
 
-  $ printf MY====== | base32 -d
+  $ printf MY====== | basex-base32 -d
   f (no-eol)
 
-  $ printf MZXQ==== | base32 -d
+  $ printf MZXQ==== | basex-base32 -d
   fo (no-eol)
 
-  $ printf MZXW6=== | base32 -d
+  $ printf MZXW6=== | basex-base32 -d
   foo (no-eol)
 
-  $ printf MZXW6YQ= | base32 -d
+  $ printf MZXW6YQ= | basex-base32 -d
   foob (no-eol)
 
-  $ printf MZXW6YTB | base32 -d
+  $ printf MZXW6YTB | basex-base32 -d
   fooba (no-eol)
 
-  $ printf MZXW6YTBOI====== | base32 -d
+  $ printf MZXW6YTBOI====== | basex-base32 -d
   foobar (no-eol)
