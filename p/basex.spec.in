@@ -30,7 +30,7 @@ Base 64 with URL and Filename Safe Alphabet.
 
 %build
 %configure CXX=g++-5
-make CXXFLAGS="$RPM_OPT_FLAGS"
+make # CXXFLAGS="$RPM_OPT_FLAGS"
 
 %check
 make check
