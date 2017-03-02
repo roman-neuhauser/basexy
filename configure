@@ -47,7 +47,7 @@ populate() # {{{
   > $2
 } # }}}
 
-rootdir=$(dirname $(realpath $0))
+rootdir=$(dirname $(readlink -f $0))
 
 prefix=/usr/local
 bindir='${prefix}/bin'
