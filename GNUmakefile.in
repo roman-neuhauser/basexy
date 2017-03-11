@@ -30,7 +30,8 @@ testers = testdecoder testencoder testslice
 
 bases = base16 base32 base32hex base64 base64ufs base256
 
-basex_headers = $(addprefix $(srcdir)/basex/,$(addsuffix .hpp,$(bases)))
+basex_headers = $(addprefix $(srcdir)/basex/,$(addsuffix .hpp,$(bases))) $(srcdir)/basex/base.hpp
+
 
 
 .PHONY: all
@@ -70,7 +71,7 @@ installdirs:
 %.html: %.rst
 	$(rst2html) $(rst2htmlflags) $< $@
 
-$(frontends): $(srcdir)/impl.hpp $(srcdir)/basex/encoder.hpp $(srcdir)/basex/decoder.hpp
+$(frontends): $(srcdir)/impl.hpp $(srcdir)/basex/base.hpp $(srcdir)/basex/encoder.hpp $(srcdir)/basex/decoder.hpp
 $(frontends): basex-%: $(srcdir)/%.cpp $(srcdir)/basex/%.hpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o$@ $<
 
