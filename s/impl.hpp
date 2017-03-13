@@ -53,13 +53,11 @@ submain(char const *cmdname, int argc, char **argv)
 
   switch (mode) {
   case decode:
-    decoder<Base>()(std::cin, std::cout);
-    break;
+    return decoder<Base>()(std::cin, std::cout);
   case encode:
   default:
-    encoder<Base>()(std::cin, std::cout);
-    break;
+    return encoder<Base>()(std::cin, std::cout);
   }
 
-  return 0;
+  return 100;
 }

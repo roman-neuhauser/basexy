@@ -35,6 +35,7 @@ struct decoder
       }
       stream_into(os);
     }
+    return 0;
   }
 
 private:

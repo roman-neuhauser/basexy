@@ -32,6 +32,7 @@ struct encoder
         push(buf[i]);
       stream_into(os);
     }
+    return 0;
   }
 
 private:
