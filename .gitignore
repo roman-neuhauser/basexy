@@ -1,17 +1,6 @@
 /GNUmakefile
 /basex
 /basex.1
-/basex-base16
-/basex-base16.1
-/basex-base32
-/basex-base32.1
-/basex-base32hex
-/basex-base32hex.1
-/basex-base64
-/basex-base64.1
-/basex-base64ufs
-/basex-base64ufs.1
-/basex-base256
 /testdecoder
 /testencoder
 /testslice

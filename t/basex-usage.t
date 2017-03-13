@@ -14,5 +14,5 @@
   [100]
 
   $ basex foo
-  basex: error: nonexistent or not executable: basex-foo
+  basex: error: unknown BASE 'foo'
   [100]

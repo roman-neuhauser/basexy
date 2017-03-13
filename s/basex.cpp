@@ -5,8 +5,14 @@
 
 #include "boost/format.hpp"
 
+#include "basex/decoder.hpp"
+#include "basex/encoder.hpp"
 
-enum Base { b16, b32, b32hex, b64, b64ufs };
+#include "basex/base16.hpp"
+#include "basex/base32.hpp"
+#include "basex/base32hex.hpp"
+#include "basex/base64.hpp"
+#include "basex/base64ufs.hpp"
 
 enum Operation { encode, decode };
 
@@ -49,24 +55,15 @@ public:
     usage();
     return 100;
   }
-  auto not_executable(std::string const &prog)
+  auto unknown_base(std::string const &prog)
   {
     os << fmt(
-      "%1$s: error: nonexistent or not executable: %2$s\n"
+      "%1$s: error: unknown BASE '%2$s'\n"
     ) % self % prog;
     return 100;
   }
 }; // }}}
 
-
-auto str_leak(std::string const &src) // {{{
-{
-  auto size = src.size();
-  char *dst = new char[size + 1];
-  src.copy(dst, size, 0);
-  dst[size] = '\0';
-  return dst;
-} // }}}
 
 int
 main(int argc, char **argv) // {{{
@@ -96,13 +93,24 @@ main(int argc, char **argv) // {{{
   if (argc == 0)
     return errors.missing_operand();
 
-  char *nargv[] = {
-    str_leak(std::string("basex-") + argv[0])
-  , str_leak(mode == decode ? "-d" : "-e")
-  , NULL
-  };
+  std::string base = argv[0];
 
-  execvp(nargv[0], nargv);
+#define dispatch_(mode_, base_) \
+  if (mode == mode_) \
+    return mode_ ## r<base_>()
 
-  return errors.not_executable(nargv[0]);
+#define dispatch(basename_, base_, ...) \
+  do { \
+    if (base != basename_) break; \
+    dispatch_(encode, base_)(__VA_ARGS__); \
+    dispatch_(decode, base_)(__VA_ARGS__); \
+  } while (0)
+
+  dispatch("base16",    b16,    std::cin, std::cout);
+  dispatch("base32",    b32,    std::cin, std::cout);
+  dispatch("base32hex", b32hex, std::cin, std::cout);
+  dispatch("base64",    b64,    std::cin, std::cout);
+  dispatch("base64ufs", b64ufs, std::cin, std::cout);
+
+  return errors.unknown_base(argv[0]);
 } // }}}

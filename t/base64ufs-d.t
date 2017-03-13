@@ -1,22 +1,22 @@
   $ . "$TESTDIR/setup"
 
 
-  $ basex-base64ufs -d </dev/null
+  $ basex -d base64ufs </dev/null
 
-  $ printf Zg== | basex-base64ufs -d
+  $ printf Zg== | basex -d base64ufs
   f (no-eol)
 
-  $ printf Zm8= | basex-base64ufs -d
+  $ printf Zm8= | basex -d base64ufs
   fo (no-eol)
 
-  $ printf Zm9v | basex-base64ufs -d
+  $ printf Zm9v | basex -d base64ufs
   foo (no-eol)
 
-  $ printf Zm9vYg== | basex-base64ufs -d
+  $ printf Zm9vYg== | basex -d base64ufs
   foob (no-eol)
 
-  $ printf Zm9vYmE= | basex-base64ufs -d
+  $ printf Zm9vYmE= | basex -d base64ufs
   fooba (no-eol)
 
-  $ printf Zm9vYmFy | basex-base64ufs -d
+  $ printf Zm9vYmFy | basex -d base64ufs
   foobar (no-eol)

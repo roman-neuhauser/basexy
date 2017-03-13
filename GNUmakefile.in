@@ -22,8 +22,7 @@ cramflags = -v
 rst2html = rst2html
 rst2htmlflags = -v --rfc-references
 
-frontends = $(addprefix basex-,base16 base32 base32hex base64 base64ufs)
-commands = basex $(frontends)
+commands = basex
 man1pages = $(addsuffix .1,$(commands))
 manpages = $(man1pages)
 testers = testdecoder testencoder testslice
@@ -70,10 +69,6 @@ installdirs:
 
 %.html: %.rst
 	$(rst2html) $(rst2htmlflags) $< $@
-
-$(frontends): $(srcdir)/impl.hpp $(srcdir)/basex/base.hpp $(srcdir)/basex/encoder.hpp $(srcdir)/basex/decoder.hpp
-$(frontends): basex-%: $(srcdir)/%.cpp $(srcdir)/basex/%.hpp
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o$@ $<
 
 basex: $(srcdir)/basex.cpp $(srcdir)/basex/encoder.hpp $(srcdir)/basex/decoder.hpp $(basex_headers)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o$@ $<

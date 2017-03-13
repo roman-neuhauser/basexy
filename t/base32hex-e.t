@@ -1,22 +1,22 @@
   $ . "$TESTDIR/setup"
 
 
-  $ basex-base32hex -e </dev/null
+  $ basex -e base32hex </dev/null
 
-  $ printf f | basex-base32hex -e
+  $ printf f | basex -e base32hex
   CO====== (no-eol)
 
-  $ printf fo | basex-base32hex -e
+  $ printf fo | basex -e base32hex
   CPNG==== (no-eol)
 
-  $ printf foo | basex-base32hex -e
+  $ printf foo | basex -e base32hex
   CPNMU=== (no-eol)
 
-  $ printf foob | basex-base32hex -e
+  $ printf foob | basex -e base32hex
   CPNMUOG= (no-eol)
 
-  $ printf fooba | basex-base32hex -e
+  $ printf fooba | basex -e base32hex
   CPNMUOJ1 (no-eol)
 
-  $ printf foobar | basex-base32hex -e
+  $ printf foobar | basex -e base32hex
   CPNMUOJ1E8====== (no-eol)

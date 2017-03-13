@@ -7,7 +7,7 @@
 .
 .Sh NAME
 .Nm basex
-.Nd Base 16, Base 32, Base 32, Base 64 encoder and decoder
+.Nd Base16, Base32, Base32Hex, Base64UFS encoder and decoder
 .\" FRONT MATTER }}}
 .
 .\" SYNOPSIS {{{
@@ -81,17 +81,9 @@ snafubar
 .Ed
 .\" }}}
 .
-.\" SEE ALSO {{{
-.Sh SEE ALSO
-.Xr basex-base16 1 ,
-.Xr basex-base32hex 1 ,
-.Xr basex-base64 1 ,
-.Xr basex-base64ufs 1 .
-.\" }}}
-.
 .\" STANDARDS {{{
 .Sh STANDARDS
-.Lk https://tools.ietf.org/html/rfc4648#section-6 RFC4648
+.Lk https://tools.ietf.org/html/rfc4648 RFC4648
 .\" }}}
 .
 .\" AUTHORS {{{

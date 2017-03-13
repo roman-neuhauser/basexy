@@ -1,22 +1,22 @@
   $ . "$TESTDIR/setup"
 
 
-  $ basex-base16 -e </dev/null
+  $ basex -e base16 </dev/null
 
-  $ printf f | basex-base16 -e
+  $ printf f | basex -e base16
   66 (no-eol)
 
-  $ printf fo | basex-base16 -e
+  $ printf fo | basex -e base16
   666F (no-eol)
 
-  $ printf foo | basex-base16 -e
+  $ printf foo | basex -e base16
   666F6F (no-eol)
 
-  $ printf foob | basex-base16 -e
+  $ printf foob | basex -e base16
   666F6F62 (no-eol)
 
-  $ printf fooba | basex-base16 -e
+  $ printf fooba | basex -e base16
   666F6F6261 (no-eol)
 
-  $ printf foobar | basex-base16 -e
+  $ printf foobar | basex -e base16
   666F6F626172 (no-eol)
