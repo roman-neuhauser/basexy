@@ -106,11 +106,11 @@ main(int argc, char **argv) // {{{
     dispatch_(decode, base_)(__VA_ARGS__); \
   } while (0)
 
-  dispatch("base16",    b16,    std::cin, std::cout);
-  dispatch("base32",    b32,    std::cin, std::cout);
-  dispatch("base32hex", b32hex, std::cin, std::cout);
-  dispatch("base64",    b64,    std::cin, std::cout);
-  dispatch("base64ufs", b64ufs, std::cin, std::cout);
+  dispatch("base16",    b16,    std::cin, std::cout, std::cerr);
+  dispatch("base32",    b32,    std::cin, std::cout, std::cerr);
+  dispatch("base32hex", b32hex, std::cin, std::cout, std::cerr);
+  dispatch("base64",    b64,    std::cin, std::cout, std::cerr);
+  dispatch("base64ufs", b64ufs, std::cin, std::cout, std::cerr);
 
   return errors.unknown_base(argv[0]);
 } // }}}

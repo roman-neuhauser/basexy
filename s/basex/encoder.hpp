@@ -21,7 +21,7 @@ struct encoder
   , base()
   {}
 
-  auto operator()(std::istream &is, std::ostream &os)
+  auto operator()(std::istream &is, std::ostream &os, std::ostream &)
   {
     auto sz = BitSize / CHAR_BIT;
     char buf[sz];

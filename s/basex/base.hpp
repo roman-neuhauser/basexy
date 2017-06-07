@@ -23,6 +23,8 @@ struct base : Base
   }
   char decode(unsigned long val)
   {
+    if (NULL == memchr(alphabet, val, strlen(alphabet)))
+      return -1;
     return ralphabet[val];
   }
 };

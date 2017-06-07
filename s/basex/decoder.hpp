@@ -3,8 +3,7 @@
 #pragma once
 
 #include <bitset>
-#include <climits>
-#include <cstdlib>
+#include <string>
 #include "slice.hpp"
 
 
@@ -22,17 +21,35 @@ struct decoder
   , base()
   {}
 
-  auto operator()(std::istream &is, std::ostream &os)
+  auto operator()(std::istream &is, std::ostream &os, std::ostream &es)
   {
+    if (!is.good())
+      return 2;
     auto sz = BitSize / InputBits;
     char buf[sz];
+    size_t pos = 0;
     while (is.good()) {
       is.read(buf, sz);
-      auto cnt = is.gcount();
-      for (auto i = 0; i < cnt; ++i) {
-        if (buf[i] == '=') break;
-        push(buf[i]);
+      auto cnt = static_cast<size_t>(is.gcount());
+      if (0 == cnt)
+        break;
+      auto sbuf = std::string(buf, cnt);
+      for (size_t i = 0; i < cnt; ++i) {
+        if (buf[i] == '=') {
+          auto npad = sbuf.find_first_not_of("=", i);
+          if (std::string::npos != npad)
+            return bad_input(es, "invalid input", pos + npad);
+          break;
+        }
+        auto dec = base.decode(buf[i]);
+        if (dec < 0)
+          return bad_input(es, "invalid input", pos + i);
+        slice<InputBits>(data, BitSize - InputBits - watermark) = dec;
+        watermark += InputBits;
       }
+      if (cnt != sz)
+        return bad_input(es, "premature EOF", pos + cnt);
+      pos += cnt;
       stream_into(os);
     }
     return 0;
@@ -40,10 +57,10 @@ struct decoder
 
 private:
 
-  auto push(uint8_t c)
+  auto bad_input(std::ostream &es, std::string const &kind, size_t offset)
   {
-    slice<InputBits>(data, BitSize - InputBits - watermark) = base.decode(c);
-    watermark += InputBits;
+    es << "basex: error: " << kind << " at offset " << offset << std::endl;
+    return 1;
   }
 
   auto& stream_into(std::ostream &os)

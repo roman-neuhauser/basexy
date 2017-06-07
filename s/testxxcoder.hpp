@@ -7,8 +7,9 @@ auto test_(char const *base, char const *input, char const *output)
 {
   std::istringstream is(input);
   std::ostringstream os;
+  std::ostringstream errors;
   Codec tool;
-  tool(is, os);
+  tool(is, os, errors);
   if (os.str() == output) {
     std::cout << "ok " << base << " " << std::quoted(input) << std::endl;
   } else {
