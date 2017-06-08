@@ -7,7 +7,7 @@
 .
 .Sh NAME
 .Nm basex
-.Nd Base16, Base32, Base32Hex, Base64UFS encoder and decoder
+.Nd Base16, Base32, Base32Hex, Base64, Base64UFS encoder and decoder
 .\" FRONT MATTER }}}
 .
 .\" SYNOPSIS {{{
@@ -22,9 +22,8 @@
 .\" DESCRIPTION {{{
 .Sh DESCRIPTION
 .Nm
-encodes or decodes standard input to/from Base 16, Base 32,
-Base 32 with Extended Hex Alphabet,
-and Base 64 with URL and Filename Safe Alphabet.
+writes to standard output the result of encoding or decoding
+standard input using one of the supported encodings.
 .\" }}}
 .
 .\" OPTIONS {{{
@@ -44,17 +43,18 @@ This is the default.
 .Sh OPERANDS
 .Bl -tag -width xx
 .It Cm BASE
-One of:
-. Li base16
-. Li base32
-. Li base32hex
-. Li base64
-. Li base64ufs .
-Selects the encoding:
-Base 16,
-Base 32,
-Base 32 with Extended Hex Alphabet,
-or Base 64 with URL and Filename Safe Alphabet
+. Bl -tag -width base64ufs -compact
+. It Li base16
+Base 16
+. It Li base32
+Base 32
+. It Li base32hex
+Base 32 with Extended Hex Alphabet
+. It Li base64
+Base 64
+. It Li base64ufs
+Base 64 with URL and Filename Safe Alphabet
+. El
 .El
 .\" }}}
 .
@@ -83,6 +83,8 @@ snafubar
 .
 .\" STANDARDS {{{
 .Sh STANDARDS
+The Base16, Base32, Base32Hex, Base64, Base64UFS
+encodings are defined in
 .Lk https://tools.ietf.org/html/rfc4648 RFC4648
 .\" }}}
 .
