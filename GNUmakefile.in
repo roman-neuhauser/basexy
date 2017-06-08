@@ -76,10 +76,7 @@ basex: $(srcdir)/basex.cpp $(srcdir)/basex/encoder.hpp $(srcdir)/basex/decoder.h
 libbasex.so: $(srcdir)/libbasex.cpp $(srcdir)/libbasex.hpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -shared -o$@ $<
 
-testdecoder: s/testdecoder.cpp $(srcdir)/basex/decoder.hpp $(basex_headers)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o$@ $<
-
-testencoder: s/testencoder.cpp $(srcdir)/basex/encoder.hpp $(basex_headers)
+testdecoder testencoder: test%: s/test%.cpp $(srcdir)/basex/%.hpp $(basex_headers)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o$@ $<
 
 testslice: s/testslice.cpp $(srcdir)/basex/slice.hpp
