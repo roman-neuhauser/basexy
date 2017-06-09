@@ -1,0 +1,29 @@
+# $FreeBSD$
+
+PORTNAME=	basexy
+PORTVERSION=	__VERSION__
+CATEGORIES=	converters
+
+COMMENT=	Base16, Base32, Base32Hex, Base64, Base64UFS encoder and decoder
+LICENSE=	MIT
+MAINTAINER=	neuhauser+basexy@sigpipe.cz
+
+HAS_CONFIGURE=	yes
+CONFIGURE_ARGS+= --prefix=${PREFIX}
+CONFIGURE_ARGS+= --mandir=${MANPREFIX}/man
+USES+=		gmake
+USE_LDCONFIG=	yes
+MAKEFILE=	GNUmakefile
+TEST_TARGET=	check
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	roman-neuhauser
+GH_PROJECT=	${PORTNAME}
+GH_TAGNAME=	v${PORTVERSION:S/+/-/g}
+
+BUILD_DEPENDS=	${LOCALBASE}/include/boost/format.hpp:devel/boost-libs
+TEST_DEPENDS=	cram:devel/cram
+
+NO_CHECKSUM=	yes
+
+.include <bsd.port.mk>

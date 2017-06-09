@@ -1,0 +1,4 @@
+RFC4648-compliant encoder and decoder for
+Base16, Base32, Base32Hex, Base64, Base64UFS.
+
+WWW: https://github.com/roman-neuhauser/basexy
