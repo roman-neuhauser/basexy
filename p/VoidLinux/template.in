@@ -1,0 +1,19 @@
+pkgname=basexy
+version=__VERSION__
+revision=1
+
+short_desc="Base16, Base32, Base32Hex, Base64UFS encoder and decoder"
+homepage="https://github.com/roman-neuhauser/$pkgname"
+license="MIT"
+maintainer="Roman Neuhauser <neuhauser+$pkgname@sigpipe.cz>"
+
+distfiles="$homepage/archive/v$version.tar.gz"
+checksum=
+
+makedepends+=\ boost-devel
+makedepends+=\ gcc
+makedepends+=\ make
+
+build_style=configure
+
+make_build_target=check
