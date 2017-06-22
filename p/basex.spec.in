@@ -14,10 +14,12 @@ BuildRoot:      %_tmppath/%name-%version-build
 BuildRequires:  filesystem
 BuildRequires:  boost-devel
 BuildRequires:  cram
-%if 0%{?leap_version} || 0%{?sle_version} || 0%{?suse_version}
+%if 0%{?leap_version} || 0%{?sle_version}
 BuildRequires:  gcc5-c++
+%define CXX g++-5
 %else
 BuildRequires:  gcc-c++
+%define CXX c++
 %endif
 
 %description
@@ -29,7 +31,7 @@ Base 64 with URL and Filename Safe Alphabet.
 %setup -q
 
 %build
-%configure CXX=g++-5
+%configure CXX=%CXX
 make # CXXFLAGS="$RPM_OPT_FLAGS"
 
 %check
