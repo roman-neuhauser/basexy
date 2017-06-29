@@ -6,6 +6,7 @@ CXX = @CXX@
 boost_includes = @boost_includes@
 
 prefix = @prefix@
+datarootdir = @datarootdir@
 bindir = @bindir@
 mandir = @mandir@
 man1dir = $(mandir)/man1
