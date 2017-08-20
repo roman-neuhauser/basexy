@@ -7,7 +7,7 @@ setup::
 
   $ decode()
   > {
-  >   printf -- "$1" | basex -d base32 2>errors
+  >   printf -- "$1" | basexy -d base32 2>errors
   > }
 
 
@@ -16,30 +16,30 @@ test::
   $ decode M
   [1]
   $ cat errors
-  basex: error: premature EOF at offset 1
+  basexy: error: premature EOF at offset 1
 
   $ decode MY
   [1]
   $ cat errors
-  basex: error: premature EOF at offset 2
+  basexy: error: premature EOF at offset 2
 
   $ decode MY=
   [1]
   $ cat errors
-  basex: error: premature EOF at offset 3
+  basexy: error: premature EOF at offset 3
 
   $ decode MY====
   [1]
   $ cat errors
-  basex: error: premature EOF at offset 6
+  basexy: error: premature EOF at offset 6
 
   $ decode MY=====
   [1]
   $ cat errors
-  basex: error: premature EOF at offset 7
+  basexy: error: premature EOF at offset 7
 
   $ decode MZXW6YTBOI=====
   fooba (no-eol)
   [1]
   $ cat errors
-  basex: error: premature EOF at offset 15
+  basexy: error: premature EOF at offset 15

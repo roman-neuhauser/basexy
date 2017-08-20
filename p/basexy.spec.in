@@ -1,7 +1,7 @@
 # norootforbuild
-# Maintainer: Roman Neuhauser <neuhauser+basex@sigpipe.cz>
+# Maintainer: Roman Neuhauser <neuhauser+basexy@sigpipe.cz>
 
-Name:           basex
+Name:           basexy
 Version:        __VERSION__
 Release:        0
 License:        MIT
@@ -42,7 +42,7 @@ make install DESTDIR="%{buildroot}"
 
 %files
 %defattr(-,root,root)
-%{_bindir}/basex
-%{_mandir}/man1/basex.1.gz
+%{_bindir}/basexy
+%{_mandir}/man1/basexy.1.gz
 
 %changelog

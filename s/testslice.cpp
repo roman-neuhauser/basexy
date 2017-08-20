@@ -3,7 +3,7 @@
 #include <bitset>
 #include <iostream>
 
-#include "basex/slice.hpp"
+#include "basexy/slice.hpp"
 
 
 int

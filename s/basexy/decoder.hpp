@@ -59,7 +59,7 @@ private:
 
   auto bad_input(std::ostream &es, std::string const &kind, size_t offset)
   {
-    es << "basex: error: " << kind << " at offset " << offset << std::endl;
+    es << "basexy: error: " << kind << " at offset " << offset << std::endl;
     return 1;
   }
 

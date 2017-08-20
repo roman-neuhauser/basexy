@@ -5,14 +5,14 @@
 #include <iostream>
 #include <sstream>
 
-#include "basex/base16.hpp"
-#include "basex/base32.hpp"
-#include "basex/base32hex.hpp"
-#include "basex/base64.hpp"
-#include "basex/base64ufs.hpp"
-#include "basex/base256.hpp"
+#include "basexy/base16.hpp"
+#include "basexy/base32.hpp"
+#include "basexy/base32hex.hpp"
+#include "basexy/base64.hpp"
+#include "basexy/base64ufs.hpp"
+#include "basexy/base256.hpp"
 
-#include "basex/encoder.hpp"
+#include "basexy/encoder.hpp"
 
 #include "testxxcoder.hpp"
 

@@ -5,14 +5,14 @@
 
 #include "boost/format.hpp"
 
-#include "basex/decoder.hpp"
-#include "basex/encoder.hpp"
+#include "basexy/decoder.hpp"
+#include "basexy/encoder.hpp"
 
-#include "basex/base16.hpp"
-#include "basex/base32.hpp"
-#include "basex/base32hex.hpp"
-#include "basex/base64.hpp"
-#include "basex/base64ufs.hpp"
+#include "basexy/base16.hpp"
+#include "basexy/base32.hpp"
+#include "basexy/base32hex.hpp"
+#include "basexy/base64.hpp"
+#include "basexy/base64ufs.hpp"
 
 enum Operation { encode, decode };
 

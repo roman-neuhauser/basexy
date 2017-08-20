@@ -7,7 +7,7 @@ setup::
 
   $ decode()
   > {
-  >   printf -- "$1" | basex -d base64 2>errors
+  >   printf -- "$1" | basexy -d base64 2>errors
   > }
 
 
@@ -16,39 +16,39 @@ test::
   $ decode Z
   [1]
   $ cat errors
-  basex: error: premature EOF at offset 1
+  basexy: error: premature EOF at offset 1
 
   $ decode Zg
   [1]
   $ cat errors
-  basex: error: premature EOF at offset 2
+  basexy: error: premature EOF at offset 2
 
   $ decode Zg=
   [1]
   $ cat errors
-  basex: error: premature EOF at offset 3
+  basexy: error: premature EOF at offset 3
 
   $ decode Zm8
   [1]
   $ cat errors
-  basex: error: premature EOF at offset 3
+  basexy: error: premature EOF at offset 3
 
   $ decode =
   [1]
   $ cat errors
-  basex: error: premature EOF at offset 1
+  basexy: error: premature EOF at offset 1
 
   $ decode ==
   [1]
   $ cat errors
-  basex: error: premature EOF at offset 2
+  basexy: error: premature EOF at offset 2
 
   $ decode ===
   [1]
   $ cat errors
-  basex: error: premature EOF at offset 3
+  basexy: error: premature EOF at offset 3
 
   $ decode =====
   [1]
   $ cat errors
-  basex: error: premature EOF at offset 5
+  basexy: error: premature EOF at offset 5

@@ -1,5 +1,5 @@
-# Maintainer: Roman Neuhauser <neuhauser+basex@sigpipe.cz>
-pkgname=basex
+# Maintainer: Roman Neuhauser <neuhauser+basexy@sigpipe.cz>
+pkgname=basexy
 pkgver=__VERSION__
 pkgrel=1
 pkgdesc="Base64, Base32, Base16 and others"

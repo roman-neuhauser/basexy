@@ -1,12 +1,12 @@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                BaseX: Base64, Base32, Base16 and others
+               BaseXY: Base64, Base32, Base16 and others
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ########################################################################
               Commandline Tools, C++17 header-only library
 ########################################################################
 
 
-This is an implementation of all five *Base X* encodings described in
+This is an implementation of all five *Base XY* encodings described in
 RFC 4648.  It is MIT-licensed, and written in C++17.
 
 

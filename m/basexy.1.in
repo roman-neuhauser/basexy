@@ -3,10 +3,10 @@
 .\" FRONT MATTER {{{
 .Dd Mar 01, 2017
 .Os
-.Dt BASEX 1
+.Dt BASEXY 1
 .
 .Sh NAME
-.Nm basex
+.Nm basexy
 .Nd Base16, Base32, Base32Hex, Base64, Base64UFS encoder and decoder
 .\" FRONT MATTER }}}
 .
@@ -74,9 +74,9 @@ Base 64 with URL and Filename Safe Alphabet
 .\" EXAMPLES {{{
 .Sh EXAMPLES
 .Bd -literal -offset xx
-$ printf snafubar | basex -e base32; echo
+$ printf snafubar | basexy -e base32; echo
 ONXGCZTVMJQXE===
-$ echo snafubar | basex -e base32 | basex -d base32
+$ echo snafubar | basexy -e base32 | basexy -d base32
 snafubar
 .Ed
 .\" }}}
@@ -90,12 +90,12 @@ encodings are defined in
 .
 .\" AUTHORS {{{
 .Sh AUTHORS
-.An Roman Neuhauser Aq Mt rneuhauser+basex@sigpipe.cz
+.An Roman Neuhauser Aq Mt rneuhauser+basexy@sigpipe.cz
 .\" AUTHORS }}}
 .
 .\" BUGS {{{
 .Sh BUGS
 No doubt plentiful.
 Please report them at
-.Aq Lk https://github.com/roman-neuhauser/basex/issues .
+.Aq Lk https://github.com/roman-neuhauser/basexy/issues .
 .\" BUGS }}}

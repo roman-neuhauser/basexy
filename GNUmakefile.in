@@ -23,14 +23,14 @@ cramflags = -v
 rst2html = rst2html
 rst2htmlflags = -v --rfc-references
 
-commands = basex
+commands = basexy
 man1pages = $(addsuffix .1,$(commands))
 manpages = $(man1pages)
 testers = testdecoder testencoder testslice
 
 bases = base16 base32 base32hex base64 base64ufs base256
 
-basex_headers = $(addprefix $(srcdir)/basex/,$(addsuffix .hpp,$(bases))) $(srcdir)/basex/base.hpp
+basexy_headers = $(addprefix $(srcdir)/basexy/,$(addsuffix .hpp,$(bases))) $(srcdir)/basexy/base.hpp
 
 
 
@@ -43,10 +43,10 @@ html: README.html
 .PHONY: man
 man: $(manpages)
 
-$(filter-out basex.%,$(manpages)): basex-%: $(smandir)/%.in
+$(filter-out basexy.%,$(manpages)): basexy-%: $(smandir)/%.in
 	cp $< $@
 
-$(filter basex.%,$(manpages)): %: $(smandir)/%.in
+$(filter basexy.%,$(manpages)): %: $(smandir)/%.in
 	cp $< $@
 
 .PHONY: check
@@ -71,14 +71,14 @@ installdirs:
 %.html: %.rst
 	$(rst2html) $(rst2htmlflags) $< $@
 
-basex: $(srcdir)/basex.cpp $(srcdir)/basex/encoder.hpp $(srcdir)/basex/decoder.hpp $(basex_headers)
+basexy: $(srcdir)/basexy.cpp $(srcdir)/basexy/encoder.hpp $(srcdir)/basexy/decoder.hpp $(basexy_headers)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o$@ $<
 
-libbasex.so: $(srcdir)/libbasex.cpp $(srcdir)/libbasex.hpp
+libbasexy.so: $(srcdir)/libbasexy.cpp $(srcdir)/libbasexy.hpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -shared -o$@ $<
 
-testdecoder testencoder: test%: s/test%.cpp $(srcdir)/basex/%.hpp $(basex_headers)
+testdecoder testencoder: test%: s/test%.cpp $(srcdir)/basexy/%.hpp $(basexy_headers)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o$@ $<
 
-testslice: s/testslice.cpp $(srcdir)/basex/slice.hpp
+testslice: s/testslice.cpp $(srcdir)/basexy/slice.hpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o$@ $<

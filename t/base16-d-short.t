@@ -7,7 +7,7 @@ setup::
 
   $ decode()
   > {
-  >   printf -- "$1" | basex -d base16 2>errors
+  >   printf -- "$1" | basexy -d base16 2>errors
   > }
 
 
@@ -16,16 +16,16 @@ test::
   $ decode 6
   [1]
   $ cat errors
-  basex: error: premature EOF at offset 1
+  basexy: error: premature EOF at offset 1
 
   $ decode 666
   f (no-eol)
   [1]
   $ cat errors
-  basex: error: premature EOF at offset 3
+  basexy: error: premature EOF at offset 3
 
   $ decode 666F6
   fo (no-eol)
   [1]
   $ cat errors
-  basex: error: premature EOF at offset 5
+  basexy: error: premature EOF at offset 5
