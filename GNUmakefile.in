@@ -1,5 +1,6 @@
 CXXFLAGS = -std=c++1z -Wall -Wextra -Wfatal-errors
 CPPFLAGS = $(addprefix -I,$(boost_includes))
+LDFLAGS = @LDFLAGS@
 LD = $(CXX)
 CXX = @CXX@
 
@@ -72,13 +73,13 @@ installdirs:
 	$(rst2html) $(rst2htmlflags) $< $@
 
 basexy: $(srcdir)/basexy.cpp $(srcdir)/basexy/encoder.hpp $(srcdir)/basexy/decoder.hpp $(basexy_headers)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -fPIE -o$@ $<
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -fPIE -o$@ $< $(LDFLAGS)
 
 libbasexy.so: $(srcdir)/libbasexy.cpp $(srcdir)/libbasexy.hpp
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -fPIC -shared -o$@ $<
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -fPIC -shared -o$@ $< $(LDFLAGS)
 
 testdecoder testencoder: test%: s/test%.cpp $(srcdir)/basexy/%.hpp $(basexy_headers)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -fPIE -o$@ $<
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -fPIE -o$@ $< $(LDFLAGS)
 
 testslice: s/testslice.cpp $(srcdir)/basexy/slice.hpp
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -fPIE -o$@ $<
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -fPIE -o$@ $< $(LDFLAGS)
