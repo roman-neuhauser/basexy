@@ -45,6 +45,7 @@ populate() # {{{
     -e "s@datarootdir@$datarootdirg" \
     -e "s@mandir@$mandirg" \
     -e "s@CXX@$CXXg" \
+    -e "s@LDFLAGS@$LDFLAGSg" \
     -e "s@boost_includes@$boost_includesg" \
     $1 \
   > $2
@@ -72,6 +73,7 @@ for a in "$@"; do
   --prefix=*)       prefix="${a#*=}"      ;;
   --with-boost=*)   with_boost="${a#*=}"  ;;
   CXX=*)            CXX="${a#*=}"         ;;
+  LDFLAGS=*)        LDFLAGS="${a#*=}"     ;;
   esac
 done
 
