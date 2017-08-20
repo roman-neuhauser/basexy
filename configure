@@ -9,12 +9,13 @@ findtool() # {{{
   eval "varval=\"\$$var\""
   if test -n "$varval"; then
     val=$(command -v $varval 2>/dev/null || :)
+  else
+    while test -z "$val" && test "${1+set}" = set; do
+      test -z "$1" ||
+        val=$(command -v "$1" 2>/dev/null || :)
+      shift
+    done
   fi
-  while test -z "$val" && test "${1+set}" = set; do
-    test -z "$1" ||
-      val=$(command -v "$1" 2>/dev/null || :)
-    shift
-  done
   test -n "$val" || {
     echo >&2 "not found: $var"
     exit 1
