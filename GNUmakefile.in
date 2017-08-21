@@ -72,13 +72,13 @@ installdirs:
 	$(rst2html) $(rst2htmlflags) $< $@
 
 basexy: $(srcdir)/basexy.cpp $(srcdir)/basexy/encoder.hpp $(srcdir)/basexy/decoder.hpp $(basexy_headers)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o$@ $<
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -fPIE -o$@ $<
 
 libbasexy.so: $(srcdir)/libbasexy.cpp $(srcdir)/libbasexy.hpp
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -shared -o$@ $<
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -fPIC -shared -o$@ $<
 
 testdecoder testencoder: test%: s/test%.cpp $(srcdir)/basexy/%.hpp $(basexy_headers)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o$@ $<
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -fPIE -o$@ $<
 
 testslice: s/testslice.cpp $(srcdir)/basexy/slice.hpp
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o$@ $<
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -fPIE -o$@ $<
