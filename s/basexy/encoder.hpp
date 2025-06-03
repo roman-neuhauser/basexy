@@ -4,6 +4,7 @@
 
 #include <bitset>
 #include <climits>
+#include <cstdint>
 #include "slice.hpp"
 
 
